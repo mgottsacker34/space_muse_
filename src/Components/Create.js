@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Iframe from 'react-iframe';
+
+import ThreeSpace from './ThreeSpace';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,13 +11,14 @@ import '../Styles/Create.css';
 
 function Create() {
   return (
-    <Container className="Create" fluid="lg">
+    <Container className="Create" fluid>
       <Row>
         <Col className="param-space" lg={3}>
-          <h1>Create</h1>
+          <h3>Create</h3>
         </Col>
         <Col className="three-space" lg={9}>
-
+          <Iframe url={process.env.PUBLIC_URL + "/aframe-template.html"} >Template</Iframe>
+          
         </Col>
       </Row>
     </Container>
