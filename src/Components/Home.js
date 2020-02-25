@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../Assets/wave_1280_white.png';
 
-import '../Styles/App.css';
+import '../Styles/Home.css';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -42,7 +42,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Home">
         <header className="App-header">
           <h1>space_muse<span className="score" style={{visibility: this.state.visible}}>_</span></h1>
           <img src={logo} className="App-logo" alt="logo" />

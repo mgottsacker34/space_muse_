@@ -17,5 +17,5 @@ h3 {
 
 ::-webkit-scrollbar {
   /* display: none; */
-  width: 0.75rem;
+  width: 0;
 }
