@@ -8,30 +8,63 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 
-function Home() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>space_muse_</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Container>
-          <Row>
-            <Col>
-            <Button href="/create" variant="dark">
-                create
-            </Button>
-            </Col>
-            <Col>
-            <Button href="/explore" variant="dark">
-                explore
-            </Button>
-            </Col>
-          </Row>
-        </Container>
-    </header>
-    
-    </div>
-  );
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible : 'hidden'
+    }
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      500
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    if (this.state.visible === 'hidden') {
+      this.setState({
+        visible: 'visible' 
+      });
+    } else {
+      this.setState({
+        visible: 'hidden'
+      });
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>space_muse<span className="score" style={{visibility: this.state.visible}}>_</span></h1>
+          <img src={logo} className="App-logo" alt="logo" />
+          <Container>
+            <Row>
+              <Col>
+              <Button href="/create" variant="dark">
+                  create
+              </Button>
+              </Col>
+              <Col>
+              <Button href="/explore" variant="dark">
+                  explore
+              </Button>
+              </Col>
+            </Row>
+          </Container>
+      </header>
+      
+      </div>
+    );
+  }
 }
 
 export default Home;

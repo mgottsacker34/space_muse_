@@ -1,0 +1,21 @@
+.ParamSpace {
+  text-align: left;
+  /* position: absolute;
+  overflow-y: scroll; */
+}
+
+h3 {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.outer {
+  height: 100%;
+  position: absolute;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  /* display: none; */
+  width: 0.75rem;
+}

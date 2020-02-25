@@ -1,0 +1,39 @@
+hr {
+  border-color: white;
+  background-color: white;
+}
+
+.annotationSelect {
+  margin:0.25rem;
+}
+
+.posInput {
+  max-width: 2rem;
+  margin: 0.25rem;
+  text-align: center;
+}
+
+.timeInput {
+  max-width: 5rem;
+  text-align: center;
+  margin: 0.25rem;
+}
+
+.scaleInput {
+  max-width: 3rem;
+  text-align: center;
+  margin: 0.25rem;
+}
+
+.addBtn {
+  margin: 0.25rem;
+  border: 0.5rem;
+  padding: 0.2rem 1.0rem;
+  background-color: #343a40;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.addBtn:hover {
+  background-color: #23272b;
+}
