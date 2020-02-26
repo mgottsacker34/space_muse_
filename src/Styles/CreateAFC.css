@@ -1,34 +1,50 @@
+.CreateAFC {
+  margin-top: 0.5rem;
+}
+
 hr {
   border-color: white;
   background-color: white;
+  margin: 0.5rem 0 !important;
+  width: 95%;
+}
+
+label {
+  margin: 0 !important;
 }
 
 .annotationSelect {
-  margin:0.25rem;
+  margin: 0.2rem 0.3rem;
 }
 
-.posInput {
+.posInput, 
+.widthInput, 
+.heightInput {
   max-width: 2rem;
-  margin: 0.25rem;
+  margin: 0.2rem 0.3rem;
   text-align: center;
+  padding: 0;
 }
 
 .timeInput {
   max-width: 5rem;
   text-align: center;
-  margin: 0.25rem;
+  margin: 0.2rem 0.3rem;
+  padding: 0;
 }
 
 .scaleInput {
   max-width: 3rem;
   text-align: center;
-  margin: 0.25rem;
+  margin: 0.2rem 0.3rem;
+  padding: 0;
 }
 
 .addBtn {
-  margin: 0.25rem;
+  width: 95%;
+  margin: 0.25rem 0;
   border: 0.5rem;
-  padding: 0.2rem 1.0rem;
+  padding: 0rem 0rem;
   background-color: #343a40;
   color: white;
   border-radius: 0.25rem;
@@ -36,4 +52,9 @@ hr {
 
 .addBtn:hover {
   background-color: #23272b;
+}
+
+.textAnnotationTextarea {
+  margin-top: 0.2rem;
+  width: 95%;
 }

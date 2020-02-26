@@ -11,7 +11,11 @@ class CreateAFC extends React.Component {
       x_pos: 0,
       y_pos: 0,
       z_pos: 0,
-      time: 0
+      time: 0,
+      width: 0,
+      height: 0,
+      textarea_text: ''
+      // Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id tellus eu lectus mattis ultricies. Vestibulum viverra egestas tincidunt. Curabitur nisi lorem, varius a ipsum non, sodales tincidunt leo. Suspendisse pellentesque malesuada urna.
     };
 
     this.handleChangeType = this.handleChangeType.bind(this);
@@ -20,6 +24,9 @@ class CreateAFC extends React.Component {
     this.handleChangeZ = this.handleChangeZ.bind(this);
     this.handleChangeT = this.handleChangeT.bind(this);
     this.handleChangeS = this.handleChangeS.bind(this);
+    this.handleChangeWidth = this.handleChangeWidth.bind(this);
+    this.handleChangeHeight = this.handleChangeHeight.bind(this);
+    this.handleChangeTA = this.handleChangeTA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -47,12 +54,47 @@ class CreateAFC extends React.Component {
     this.setState({ scale: event.target.value });
   }
 
+  handleChangeWidth(event) {
+    this.setState({ width: event.target.value });
+  }
+
+  handleChangeHeight(event) {
+    this.setState({ height: event.target.value });
+  }
+
+  handleChangeTA(event) {
+    this.setState({ textarea_text: event.target.value });
+  }
+
   handleSubmit(event) {
-    alert("submitted: " + this.state.annotation_type);
+    const html_text = '<a-entity geometry="primitive: plane; height: ' + this.state.height + 
+                      '; width: ' + this.state.width + '" ' +
+                      'material="color: black" ' +
+                      'text="value: ' + this.state.textarea_text + '; align: center" ' +
+                      'position="' + this.state.x_pos + ' ' + this.state.y_pos + ' ' + this.state.z_pos + '" ' +
+                      '></a-entity>';
+    this.props.onAddAFC(html_text);
     event.preventDefault();
   }
 
   render() {
+    let input_long;
+    if (this.state.annotation_type === 'text') {
+      input_long = <div>
+        <label>
+          width: &nbsp;
+          <input className="widthInput" type="text" placeholder="0" onChange={this.handleChangeWidth} />
+        </label>
+        <label>
+          height: &nbsp;
+          <input className="heightInput" type="text" placeholder="0" onChange={this.handleChangeHeight} />
+        </label>
+        <textarea className="textAnnotationTextarea" onChange={this.handleChangeTA} value={this.state.textarea_text} placeholder="annotation text" />
+      </div>
+    } else {
+      input_long = <div></div>
+    }
+
     return (
       <div className="CreateAFC">
         <form onSubmit={this.handleSubmit} >
@@ -76,6 +118,7 @@ class CreateAFC extends React.Component {
             scale: &nbsp;
             <input className="scaleInput" type="text" placeholder="1.0" onChange={this.handleChangeS} />
           </label>
+          {input_long}
           <input className="addBtn" type="submit" value="add" />
         </form>
         <hr />
