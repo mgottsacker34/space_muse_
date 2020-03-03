@@ -4,7 +4,9 @@
   overflow-y: scroll; */
 }
 
-h3 {
+h3,
+h4,
+h5 {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -18,4 +20,59 @@ h3 {
 ::-webkit-scrollbar {
   /* display: none; */
   width: 0;
+}
+
+.noteRow {
+  background-color: transparent;
+  animation-name: colorAnimate;
+  animation-duration: 1s;
+  border: 1px solid white;
+  /* border-color: white; */
+}
+
+.noteRow:hover {
+  background-color: #23272b;
+}
+
+@keyframes colorAnimate {
+  0% {background-color: transparent}
+  50% {background-color: white}
+  100% {background-color: transparent}
+}
+
+/* table {
+  width: 95%;
+  border: 1rem !important;
+  border-color: white;
+} */
+
+.noteTable {
+  color: white;
+  width: 95%;
+}
+
+.thType,
+.thTime {
+  width: 25%;
+  /* border: 1px solid white; */
+  padding: 0.3rem;
+}
+
+.thDetails {
+  width: 50%;
+  /* border: 1px solid white; */
+  padding: 0.3rem;
+}
+
+.tdType,
+.tdTime {
+  width: 25%;
+  border: 1px solid white;
+  padding: 0.3rem;
+}
+
+.tdDetails {
+  width: 50%;
+  border: 1px solid white;
+  padding: 0.3rem;
 }

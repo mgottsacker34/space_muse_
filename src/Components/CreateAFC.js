@@ -7,14 +7,14 @@ class CreateAFC extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      annotation_type: 'text',
-      x_pos: 0,
-      y_pos: 0,
-      z_pos: 0,
-      time: 0,
-      width: 0,
-      height: 0,
-      textarea_text: ''
+      annotation_type: 'select...',
+        x_pos: '',
+        y_pos: '',
+        z_pos: '',
+        time: '',
+        width: '',
+        height: '',
+        textarea_text: ''
       // Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id tellus eu lectus mattis ultricies. Vestibulum viverra egestas tincidunt. Curabitur nisi lorem, varius a ipsum non, sodales tincidunt leo. Suspendisse pellentesque malesuada urna.
     };
 
@@ -23,7 +23,7 @@ class CreateAFC extends React.Component {
     this.handleChangeY = this.handleChangeY.bind(this);
     this.handleChangeZ = this.handleChangeZ.bind(this);
     this.handleChangeT = this.handleChangeT.bind(this);
-    this.handleChangeS = this.handleChangeS.bind(this);
+    this.handleChangeScale = this.handleChangeScale.bind(this);
     this.handleChangeWidth = this.handleChangeWidth.bind(this);
     this.handleChangeHeight = this.handleChangeHeight.bind(this);
     this.handleChangeTA = this.handleChangeTA.bind(this);
@@ -50,7 +50,7 @@ class CreateAFC extends React.Component {
     this.setState({ time: event.target.value });
   }
 
-  handleChangeS(event) {
+  handleChangeScale(event) {
     this.setState({ scale: event.target.value });
   }
 
@@ -67,13 +67,24 @@ class CreateAFC extends React.Component {
   }
 
   handleSubmit(event) {
-    const html_text = '<a-entity geometry="primitive: plane; height: ' + this.state.height + 
-                      '; width: ' + this.state.width + '" ' +
-                      'material="color: black" ' +
-                      'text="value: ' + this.state.textarea_text + '; align: center" ' +
-                      'position="' + this.state.x_pos + ' ' + this.state.y_pos + ' ' + this.state.z_pos + '" ' +
-                      '></a-entity>';
-    this.props.onAddAFC(html_text);
+    // const html_text = '<a-entity geometry="primitive: plane; height: ' + this.state.height + 
+    //                   '; width: ' + this.state.width + '" ' +
+    //                   'material="color: black" ' +
+    //                   'text="value: ' + this.state.textarea_text + '; align: center" ' +
+    //                   'position="' + this.state.x_pos + ' ' + this.state.y_pos + ' ' + this.state.z_pos + '" ' +
+    //                   '></a-entity>';
+    // this.props.onAddAFC(html_text);
+    this.props.onAddAFC(this.state);
+    this.setState({
+        annotation_type: 'select...',
+        x_pos: '',
+        y_pos: '',
+        z_pos: '',
+        time: '',
+        width: '',
+        height: '',
+        textarea_text: ''
+    })
     event.preventDefault();
   }
 
@@ -100,26 +111,29 @@ class CreateAFC extends React.Component {
         <form onSubmit={this.handleSubmit} >
           <label>annotation: &nbsp;
             <select className="annotationSelect" value={this.state.annotation_type} onChange={this.handleChangeType} >
+              <option value="select..." disabled="disabled">select...</option>
               <option value="text">text</option>
               <option value="plane">plane</option>
             </select>
           </label>
           <label>
             position: &nbsp;
-            <input className="posInput" type="text" placeholder="x" onChange={this.handleChangeX} />
-            <input className="posInput" type="text" placeholder="y" onChange={this.handleChangeY} />
-            <input className="posInput" type="text" placeholder="z" onChange={this.handleChangeZ} />
+            <input className="posInput" value={this.state.x_pos} type="text" placeholder="x" onChange={this.handleChangeX} />
+            <input className="posInput" value={this.state.y_pos} type="text" placeholder="y" onChange={this.handleChangeY} />
+            <input className="posInput" value={this.state.z_pos} type="text" placeholder="z" onChange={this.handleChangeZ} />
           </label>
           <label>
             time (ms): &nbsp;
-            <input className="timeInput" type="text" placeholder="0" onChange={this.handleChangeT} />
+            <input className="timeInput" value={this.state.time} type="text" placeholder="0" onChange={this.handleChangeT} />
           </label>
+          {/*
           <label>
             scale: &nbsp;
-            <input className="scaleInput" type="text" placeholder="1.0" onChange={this.handleChangeS} />
+            <input className="scaleInput" type="text" placeholder="1.0" onChange={this.handleChangeScale} />
           </label>
+          */}
           {input_long}
-          <input className="addBtn" type="submit" value="add" />
+          <input className="addBtn" type="submit" value="annotate" />
         </form>
         <hr />
       </div>
